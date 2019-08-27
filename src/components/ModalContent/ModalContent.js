@@ -1,8 +1,18 @@
 import React from 'react';
 import './ModalContent.css';
 
-export default function ModalContent({ game, setGame, players, setPlayers }) {
-  function player2Select(player) {}
+export default function ModalContent({ gameData, game, players, setPlayers }) {
+  function player2Select(e) {
+    let playerIsCOM;
+    if (e.target) {
+      if (e.target.value === 'human') {
+        playerIsCOM = false;
+      } else {
+        playerIsCOM = true;
+      }
+    }
+    game.setPlayer2(playerIsCOM);
+  }
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -17,7 +27,7 @@ export default function ModalContent({ game, setGame, players, setPlayers }) {
           name="player-count"
           value="human"
           id="human"
-          onChange={player2Select(false)}
+          onChange={e => player2Select(e)}
         />
         <label htmlFor="human">Player vs Player</label>
         <input
@@ -25,10 +35,11 @@ export default function ModalContent({ game, setGame, players, setPlayers }) {
           name="player-count"
           value="com"
           id="com"
-          onChange={player2Select(true)}
+          onChange={e => player2Select(e)}
         />
         <label htmlFor="com">Player vs COM</label>
       </fieldset>
+
       <fieldset id="player-color">
         <h2>Player 1, choose a color</h2>
         <input type="radio" name="player-color" value="red" id="red" />

@@ -24,7 +24,7 @@ Modal.setAppElement('#root');
 export default function App() {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [players, setPlayers] = useContext(PlayersContext);
-  const [game, setGame] = useContext(GameContext);
+  const [gameData, game] = useContext(GameContext);
 
   function openModal() {
     setModalIsOpen(true);
@@ -47,13 +47,13 @@ export default function App() {
         closeTimeoutMS={2000}
       >
         <ModalContent
+          gameData={gameData}
           game={game}
-          setGame={setGame}
           players={players}
           setPlayers={setPlayers}
         />
       </Modal>
-      {players.one.score}
+      {gameData.player2isCOM ? 'Player 2 is Comp' : 'Player 2 is human'}
     </div>
   );
 }
