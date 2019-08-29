@@ -4,6 +4,7 @@ import './App.css';
 
 import Header from '../Header/Header';
 import ScoreBoard from '../ScoreBoard/ScoreBoard';
+import StartBtn from '../StartBtn/StartBtn';
 import ModalContent from '../ModalContent/ModalContent';
 import GameBoard from '../GameBoard/GameBoard';
 
@@ -35,7 +36,8 @@ export default function App() {
     <div className="App">
       <Header />
       <ScoreBoard />
-      <button onClick={openModal}>Start Game/New Game</button>
+      <StartBtn openModal={openModal} />
+      <GameBoard />
       <Modal
         isOpen={modalIsOpen}
         onRequestClose={closeModal}
@@ -45,7 +47,6 @@ export default function App() {
       >
         <ModalContent closeModal={closeModal} />
       </Modal>
-      <GameBoard />
     </div>
   );
 }
