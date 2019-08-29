@@ -12,7 +12,9 @@ export default function ScoreBoard() {
       <div>
         <span>Player 1: {players.one.score}</span>
         <span> </span>
-        <span>Player 2: {players.two.score}</span>
+        <span>
+          {game.player2isCOM ? 'COM' : 'Player 2'}: {players.two.score}
+        </span>
       </div>
     );
   }

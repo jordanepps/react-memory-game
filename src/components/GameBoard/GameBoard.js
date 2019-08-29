@@ -1,11 +1,21 @@
-import React from 'react';
-// import React, { useContext } from 'react';
+import React, { useContext } from 'react';
 import './GameBoard.css';
 
-// import { PlayersContext, GameContext } from '../../contexts/DataContext';
+import Card from '../Card/Card';
+import { GameContext } from '../../contexts/DataContext';
 
 export default function GameBoard() {
-//   const players = useContext(PlayersContext);
-  //   const [gameData, game] = useContext(GameContext);
-  return <div>Game Board</div>;
+  const [gameData] = useContext(GameContext);
+
+  function renderGameBoard() {
+    return (
+      <div>
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+      </div>
+    );
+  }
+  return gameData.gameStarted ? renderGameBoard() : <div />;
 }
