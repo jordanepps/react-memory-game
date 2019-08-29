@@ -27,6 +27,7 @@ export default function ModalContent({
   function handleSubmit(e) {
     e.preventDefault();
     closeModal();
+    game.startGame();
   }
 
   return (

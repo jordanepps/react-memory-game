@@ -10,7 +10,8 @@ const gameInfo = {
   player1Turn: true,
   player2isCOM: false,
   pairsLeft: 9,
-  cardsFlipped: []
+  cardsFlipped: [],
+  gameStarted: false
 };
 
 export const PlayersContext = createContext(currentPlayers);
@@ -19,10 +20,11 @@ export const GameContext = createContext(gameInfo);
 export default function DataContext({ children }) {
   const [players, setPlayers] = useState(currentPlayers);
   const [gameData, setGame] = useState(gameInfo);
-  const [player2IsComp, setPlayer2IsComp] = useState(false);
 
   function setPlayer2(isCOM) {
-    setPlayer2IsComp(isCOM);
+    const data = gameData;
+    data.player2isCOM = isCOM;
+    setGame(data);
   }
 
   function setPlayerColors(color) {
@@ -37,14 +39,19 @@ export default function DataContext({ children }) {
     setPlayers(player);
   }
 
-  // function startGame(){}
+  function startGame() {
+    const data = gameData;
+    data.gameStarted = true;
+    setGame(data);
+    console.log('Game started');
+  }
 
   // function setPlayerTurn() {}
   // function setPairsLeft() {}
   // function setFlipsLeft() {}
   // function setCardsFlipped() {}
 
-  const game = { player2IsComp, setPlayer2, setPlayerColors };
+  const game = { setPlayer2, setPlayerColors, startGame };
 
   return (
     <PlayersContext.Provider value={[players, setPlayers]}>

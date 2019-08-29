@@ -36,8 +36,8 @@ export default function App() {
 
   return (
     <div className="App">
-      <Header />
-      <ScoreBoard />
+      <Header gameStarted={gameData.gameStarted} />
+      <ScoreBoard gameStarted={gameData.gameStarted} players={players} />
       <button onClick={openModal}>Start Game/New Game</button>
       <Modal
         isOpen={modalIsOpen}
