@@ -51,9 +51,9 @@ export default function App() {
           game={game}
           players={players}
           setPlayers={setPlayers}
+          closeModal={closeModal}
         />
       </Modal>
-      {gameData.player2isCOM ? 'Player 2 is Comp' : 'Player 2 is human'}
     </div>
   );
 }

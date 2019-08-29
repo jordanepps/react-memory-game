@@ -25,12 +25,26 @@ export default function DataContext({ children }) {
     setPlayer2IsComp(isCOM);
   }
 
+  function setPlayerColors(color) {
+    const player = currentPlayers;
+    if (color === 'red') {
+      player.one.color = 'red';
+      player.two.color = 'blue';
+    } else {
+      player.one.color = 'blue';
+      player.two.color = 'red';
+    }
+    setPlayers(player);
+  }
+
+  // function startGame(){}
+
   // function setPlayerTurn() {}
   // function setPairsLeft() {}
   // function setFlipsLeft() {}
   // function setCardsFlipped() {}
 
-  const game = { setPlayer2 };
+  const game = { player2IsComp, setPlayer2, setPlayerColors };
 
   return (
     <PlayersContext.Provider value={[players, setPlayers]}>
