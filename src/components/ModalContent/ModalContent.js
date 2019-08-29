@@ -1,13 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import './ModalContent.css';
 
-export default function ModalContent({
-  gameData,
-  game,
-  players,
-  setPlayers,
-  closeModal
-}) {
+import { GameContext } from '../../contexts/DataContext';
+
+export default function ModalContent({ closeModal }) {
+  const game = useContext(GameContext)[1];
+
   function player2Select(e) {
     let playerIsCOM;
     if (e.target) {

@@ -1,7 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import './ScoreBoard.css';
 
-export default function ScoreBoard({ players, gameStarted }) {
+import { PlayersContext, GameContext } from '../../contexts/DataContext';
+
+export default function ScoreBoard() {
+  const [players] = useContext(PlayersContext);
+  const [game] = useContext(GameContext);
+
   function renderScoreBoard() {
     return (
       <div>
@@ -11,5 +16,5 @@ export default function ScoreBoard({ players, gameStarted }) {
       </div>
     );
   }
-  return gameStarted ? renderScoreBoard() : <div />;
+  return game.gameStarted ? renderScoreBoard() : <div />;
 }

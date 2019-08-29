@@ -1,15 +1,24 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import './Header.css';
 
-export default function Header({ gameStarted }) {
+import { GameContext } from '../../contexts/DataContext';
+
+export default function Header() {
+  const [game] = useContext(GameContext);
+
+  function renderAboutMessage() {
+    return (
+      <span className="app-about">
+        Find all the matching pairs of cards with a friend. The one who finds
+        the most matches is the winner.
+      </span>
+    );
+  }
+
   return (
     <header>
       <h1 className="app-title">Memory Card Game</h1>
-      <span className="app-about">
-        {gameStarted
-          ? ''
-          : 'Find all the matching pairs of cards with a friend. The one who finds the most matches is the winner.'}
-      </span>
+      {game.gameStarted ? '' : renderAboutMessage()}
     </header>
   );
 }

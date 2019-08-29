@@ -1,12 +1,11 @@
-import React, { useState, useContext } from 'react';
-// import ReactDOM from 'react-dom';
+import React, { useState } from 'react';
 import Modal from 'react-modal';
 import './App.css';
 
 import Header from '../Header/Header';
 import ScoreBoard from '../ScoreBoard/ScoreBoard';
 import ModalContent from '../ModalContent/ModalContent';
-import { PlayersContext, GameContext } from '../../contexts/DataContext';
+import GameBoard from '../GameBoard/GameBoard';
 
 const customStyles = {
   content: {
@@ -23,8 +22,6 @@ Modal.setAppElement('#root');
 
 export default function App() {
   const [modalIsOpen, setModalIsOpen] = useState(false);
-  const [players, setPlayers] = useContext(PlayersContext);
-  const [gameData, game] = useContext(GameContext);
 
   function openModal() {
     setModalIsOpen(true);
@@ -36,8 +33,8 @@ export default function App() {
 
   return (
     <div className="App">
-      <Header gameStarted={gameData.gameStarted} />
-      <ScoreBoard gameStarted={gameData.gameStarted} players={players} />
+      <Header />
+      <ScoreBoard />
       <button onClick={openModal}>Start Game/New Game</button>
       <Modal
         isOpen={modalIsOpen}
@@ -46,14 +43,9 @@ export default function App() {
         contentLabel="Test Modal"
         closeTimeoutMS={2000}
       >
-        <ModalContent
-          gameData={gameData}
-          game={game}
-          players={players}
-          setPlayers={setPlayers}
-          closeModal={closeModal}
-        />
+        <ModalContent closeModal={closeModal} />
       </Modal>
+      <GameBoard />
     </div>
   );
 }
