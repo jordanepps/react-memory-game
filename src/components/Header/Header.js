@@ -5,12 +5,13 @@ import { GameContext } from '../../contexts/DataContext';
 
 export default function Header() {
   const [game] = useContext(GameContext);
+  const { gameStarted } = game;
 
   function renderAboutMessage() {
     return (
       <span className="app-about">
-        Find all the matching pairs of cards with a friend. The one who finds
-        the most matches is the winner.
+        Find all of the matching pairs of cards with a friend or face the
+        computer. The one who finds the most matches wins!
       </span>
     );
   }
@@ -18,7 +19,7 @@ export default function Header() {
   return (
     <header>
       <h1 className="app-title">Memory Card Game</h1>
-      {game.gameStarted ? '' : renderAboutMessage()}
+      {gameStarted ? '' : renderAboutMessage()}
     </header>
   );
 }
