@@ -18,6 +18,40 @@ export default function Header() {
 
   return (
     <header>
+      <div>
+        <div className="letter">
+          <p>M</p>
+        </div>
+        <div className="letter">
+          <p>E</p>
+        </div>
+        <div className="letter">
+          <p>M</p>
+        </div>
+        <div className="letter">
+          <p>O</p>
+        </div>
+        <div className="letter">
+          <p>R</p>
+        </div>
+        <div className="letter">
+          <p>Y</p>
+        </div>
+      </div>
+      {/* <div>
+        <div className="letter">
+          <p>C</p>
+        </div>
+        <div className="letter">
+          <p>A</p>
+        </div>
+        <div className="letter">
+          <p>R</p>
+        </div>
+        <div className="letter">
+          <p>D</p>
+        </div>
+      </div> */}
       <h1 className="app-title">Memory Card Game</h1>
       {gameStarted ? '' : renderAboutMessage()}
     </header>
