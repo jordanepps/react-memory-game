@@ -6,17 +6,29 @@ import { PlayersContext, GameContext } from '../../contexts/DataContext';
 export default function ScoreBoard() {
   const [players] = useContext(PlayersContext);
   const [game] = useContext(GameContext);
+  const { one, two } = players;
+  const { player2isCOM, gameStarted } = game;
+
+  function renderPlayer1Score(currentScore) {
+    return <span>Player 1: {currentScore}</span>;
+  }
+
+  function renderPlayer2Score(isCOM, currentScore) {
+    const player = isCOM ? 'COM' : 'Player 2';
+    return (
+      <span>
+        {player}: {currentScore}
+      </span>
+    );
+  }
 
   function renderScoreBoard() {
     return (
       <div>
-        <span>Player 1: {players.one.score}</span>
-        <span> </span>
-        <span>
-          {game.player2isCOM ? 'COM' : 'Player 2'}: {players.two.score}
-        </span>
+        {renderPlayer1Score(one.score)}
+        {renderPlayer2Score(player2isCOM, two.score)}
       </div>
     );
   }
-  return game.gameStarted ? renderScoreBoard() : <div />;
+  return gameStarted ? renderScoreBoard() : <div />;
 }
