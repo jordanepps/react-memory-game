@@ -42,10 +42,6 @@ export default function GameBoard() {
 
   return (
     <div className="game-board" ref={containerRef}>
-      {/* <Card />
-      <Card />
-      <Card />
-      <Card /> */}
       {gameStarted ? renderCards() : ''}
     </div>
   );
