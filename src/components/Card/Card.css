@@ -6,6 +6,7 @@
     width: 100px;
     height: 150px;
     cursor: pointer;
+    opacity: 0;
 }
 
 .card-container {

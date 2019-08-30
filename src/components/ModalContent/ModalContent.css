@@ -5,3 +5,7 @@ form {
 form fieldset {
     border: none;
 }
+
+fieldset h2 {
+    font-family: 'Raleway', sans-serif;
+}
