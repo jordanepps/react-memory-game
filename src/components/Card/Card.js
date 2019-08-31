@@ -14,12 +14,22 @@ export default function Card() {
   // useEffect(() => {
   //   console.log(cardRef);
   // }, [gameStarted]);
-
+  //CANT USE SPRING FOR BACKGROUND COLOR
   function handleOnMouseEnter(e) {
     // const cardFront = [...cardRef.current];
     // console.log(cardFront);
-    console.log(cardRef.current);
+    console.log(cardRef.current.style);
     // console.log(cardRef.current.querySelector('.card-front'));
+    spring({
+      config: 'wobbly',
+      values: {
+        backgroundColor: ['#ffffff', 1]
+      },
+      onUpdate: ({ backgroundColor }) => {
+        console.log(backgroundColor);
+        cardRef.current.style.backgroundColor = backgroundColor;
+      }
+    });
   }
   return (
     <div className="card" ref={cardRef}>
