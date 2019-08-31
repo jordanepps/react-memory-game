@@ -52,7 +52,7 @@ export default function Header() {
           <p>D</p>
         </div>
       </div> */}
-      <h1 className="app-title">Memory Card Game</h1>
+      <h1 className="app-title">Card Game</h1>
       {gameStarted ? '' : renderAboutMessage()}
     </header>
   );
