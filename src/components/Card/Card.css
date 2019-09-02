@@ -18,7 +18,7 @@
     transition: transform 0.6s;
     transform-style: preserve-3d;
     border-radius: 4px;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); */
 }
 
 .show {
@@ -28,5 +28,5 @@
     -moz-transform: rotateY(180deg);
     -o-transform: rotateY(180deg);
     /* -webkit-backface-visibility: hidden; */
-    background: blue;
+    background-color: #5b5a5a;
 }
