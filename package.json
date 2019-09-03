@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "react": "^16.9.0",
+    "react-card-flip": "^0.8.1",
     "react-dom": "^16.9.0",
     "react-flip-toolkit": "^7.0.3",
     "react-modal": "^3.9.1",

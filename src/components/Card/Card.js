@@ -14,7 +14,10 @@ export default function Card() {
     // console.log(cardFlipped);
     setCardFlipped(true);
   }
-
+  /*
+CARD BACK IS REVEALED IMMEDIATELY AFTER CLICK AND BEFORE FLIP
+FIND A FIX FOR THIS BUG
+*/
   return (
     <div className="card" ref={cardRef}>
       <div className={cardFlipped ? 'card-container show' : 'card-container'}>

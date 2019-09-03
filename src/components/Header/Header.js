@@ -1,11 +1,18 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
+import ReactCardFlip from 'react-card-flip';
 import './Header.css';
 
 import { GameContext } from '../../contexts/DataContext';
 
 export default function Header() {
   const [game] = useContext(GameContext);
+  const [isFlipped, setIsFlipped] = useState(false);
   const { gameStarted } = game;
+
+  function handleClick(e) {
+    e.preventDefault();
+    setIsFlipped(!isFlipped);
+  }
 
   function renderAboutMessage() {
     return (
@@ -54,6 +61,16 @@ export default function Header() {
       </div> */}
       <h1 className="app-title">Card Game</h1>
       {gameStarted ? '' : renderAboutMessage()}
+      <ReactCardFlip isFlipped={isFlipped}>
+        <div key="front">
+          FRONT TEST!!!
+          <button onClick={handleClick}>Flip</button>
+        </div>
+        <div key="back">
+          BACK TEST!!!
+          <button onClick={handleClick}>Flip</button>
+        </div>
+      </ReactCardFlip>
     </header>
   );
 }
