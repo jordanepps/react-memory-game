@@ -1,4 +1,5 @@
 import React, { useRef, useState } from 'react';
+import ReactCardFlip from 'react-card-flip';
 import './Card.css';
 
 import CardFront from '../CardFront/CardFront';
@@ -20,9 +21,11 @@ FIND A FIX FOR THIS BUG
 */
   return (
     <div className="card" ref={cardRef}>
-      <div className={cardFlipped ? 'card-container show' : 'card-container'}>
-        <CardFront handleFlip={handleFlip} />
-        <CardBack />
+      <div className="card-container">
+        <ReactCardFlip isFlipped={cardFlipped}>
+          <CardFront handleFlip={handleFlip} key="front" />
+          <CardBack key="back" />
+        </ReactCardFlip>
       </div>
     </div>
   );
