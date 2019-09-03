@@ -8,6 +8,8 @@ import StartBtn from '../StartBtn/StartBtn';
 import ModalContent from '../ModalContent/ModalContent';
 import GameBoard from '../GameBoard/GameBoard';
 
+Modal.setAppElement('#root');
+
 const customStyles = {
   content: {
     top: '50%',
@@ -18,8 +20,6 @@ const customStyles = {
     transform: 'translate(-50%, -50%)'
   }
 };
-
-Modal.setAppElement('#root');
 
 export default function App() {
   const [modalIsOpen, setModalIsOpen] = useState(false);

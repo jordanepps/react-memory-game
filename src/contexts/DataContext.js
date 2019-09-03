@@ -11,7 +11,8 @@ const gameInfo = {
   player2isCOM: false,
   pairsLeft: 9,
   cardsFlipped: [],
-  gameStarted: false
+  gameStarted: false,
+  allCardsFlipped: true
 };
 
 export const PlayersContext = createContext(currentPlayers);

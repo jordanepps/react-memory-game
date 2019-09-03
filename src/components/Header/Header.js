@@ -9,16 +9,16 @@ export default function Header() {
 
   function renderAboutMessage() {
     return (
-      <span className="app-about">
+      <p className="app-about">
         Find all of the matching pairs of cards with a friend or face the
         computer. The one who finds the most matches wins!
-      </span>
+      </p>
     );
   }
 
   return (
     <header>
-      <div>
+      <div className="app-title-container">
         <div className="letter">
           <p>M</p>
         </div>
@@ -37,8 +37,9 @@ export default function Header() {
         <div className="letter">
           <p>Y</p>
         </div>
+        <h1 className="app-title">Card Game</h1>
       </div>
-      <h1 className="app-title">Card Game</h1>
+
       {gameStarted ? '' : renderAboutMessage()}
     </header>
   );

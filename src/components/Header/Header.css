@@ -1,3 +1,7 @@
+.app-title-container {
+    margin-top: 25px;
+}
+
 .app-title {
     font-family: 'Raleway', sans-serif;
     font-family: 'Walter Turncoat', cursive;
@@ -10,7 +14,10 @@
 }
 
 .app-about {
-    font-size: 20px;
+    font-size: 25px;
+    max-width: 500px;
+    line-height: 30px;
+    margin: auto;
 }
 
 .letter {

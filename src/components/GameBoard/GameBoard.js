@@ -1,21 +1,41 @@
 import React, { useContext, useEffect, useRef } from 'react';
 import { spring } from 'react-flip-toolkit';
-import './GameBoard.css';
-
-import Card from '../Card/Card';
 import { GameContext } from '../../contexts/DataContext';
+import './GameBoard.css';
+import Card from '../Card/Card';
 
 export default function GameBoard() {
   const [gameData] = useContext(GameContext);
   const { gameStarted } = gameData;
   const containerRef = useRef(null);
 
-  function renderCards() {
+  function renderCards(isFlipped) {
     //Will render multiple blank cards for animation testing
+    const cardData = [
+      'a',
+      'a',
+      'b',
+      'b',
+      'c',
+      'c',
+      'd',
+      'd',
+      'e',
+      'e',
+      'f',
+      'f',
+      'g',
+      'g',
+      'h',
+      'h',
+      'i',
+      'i'
+    ];
     const arr = [];
-    for (let i = 0; i <= 11; i++) {
-      arr.push(<Card key={i} />);
-    }
+    cardData.forEach((card, i) => {
+      arr.push(<Card key={i} icon={card} />);
+    });
+
     return arr;
   }
 
@@ -32,9 +52,10 @@ export default function GameBoard() {
           el.style.opacity = opacity;
           el.style.transform = `translateY(${translateY}px)`;
         },
-        delay: i * 30,
+        delay: i * 250,
         onComplete: () => {
           // add callback logic here if necessary
+          console.log('done');
         }
       });
     });
