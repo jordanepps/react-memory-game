@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useRef } from 'react';
+import React, { useState, useContext, useEffect, useRef } from 'react';
 import { spring } from 'react-flip-toolkit';
 import { GameContext } from '../../contexts/DataContext';
 import './GameBoard.css';
@@ -7,9 +7,10 @@ import Card from '../Card/Card';
 export default function GameBoard() {
   const [gameData] = useContext(GameContext);
   const { gameStarted } = gameData;
+  const [allCardsFlipped, setAllCardsFlipped] = useState(true);
   const containerRef = useRef(null);
 
-  function renderCards(isFlipped) {
+  function renderCards() {
     //Will render multiple blank cards for animation testing
     const cardData = [
       'a',
@@ -33,7 +34,7 @@ export default function GameBoard() {
     ];
     const arr = [];
     cardData.forEach((card, i) => {
-      arr.push(<Card key={i} icon={card} />);
+      arr.push(<Card key={i} icon={card} allCardsFlipped={allCardsFlipped} />);
     });
 
     return arr;
@@ -55,15 +56,21 @@ export default function GameBoard() {
         delay: i * 250,
         onComplete: () => {
           // add callback logic here if necessary
-          console.log('done');
         }
       });
     });
   }, [gameStarted]);
 
+  function flipCards() {
+    setTimeout(() => {
+      setAllCardsFlipped(false);
+    }, 8500);
+  }
+
   return (
     <div className="game-board" ref={containerRef}>
       {gameStarted ? renderCards() : ''}
+      {flipCards()}
     </div>
   );
 }

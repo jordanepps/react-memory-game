@@ -11,8 +11,7 @@ const gameInfo = {
   player2isCOM: false,
   pairsLeft: 9,
   cardsFlipped: [],
-  gameStarted: false,
-  allCardsFlipped: true
+  gameStarted: false
 };
 
 export const PlayersContext = createContext(currentPlayers);
@@ -46,6 +45,14 @@ export default function DataContext({ children }) {
     setGame(data);
     console.log('Game started');
   }
+
+  // function flipAllCards() {
+  //   const data = gameData;
+  //   console.log(data.allCardsFlipped);
+  //   data.allCardsFlipped = false;
+  //   setGame(data);
+  //   console.log(gameData.allCardsFlipped);
+  // }
 
   // function setPlayerTurn() {}
   // function setPairsLeft() {}
