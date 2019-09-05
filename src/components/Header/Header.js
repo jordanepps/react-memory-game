@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
-import './Header.css';
-
 import { GameContext } from '../../contexts/DataContext';
+import './Header.css';
+import HeaderLetterCard from '../HeaderLetterCard/HeaderLetterCard';
 
 export default function Header() {
   const [game] = useContext(GameContext);
@@ -16,27 +16,17 @@ export default function Header() {
     );
   }
 
+  function renderLetterCards() {
+    const title = 'memory';
+    return title
+      .split('')
+      .map((letter, i) => <HeaderLetterCard letter={letter} key={i} />);
+  }
+
   return (
     <header>
       <div className="app-title-container">
-        <div className="letter">
-          <p>M</p>
-        </div>
-        <div className="letter">
-          <p>E</p>
-        </div>
-        <div className="letter">
-          <p>M</p>
-        </div>
-        <div className="letter">
-          <p>O</p>
-        </div>
-        <div className="letter">
-          <p>R</p>
-        </div>
-        <div className="letter">
-          <p>Y</p>
-        </div>
+        {renderLetterCards()}
         <h1 className="app-title">Card Game</h1>
       </div>
 
