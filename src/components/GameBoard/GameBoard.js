@@ -44,7 +44,7 @@ export default function GameBoard() {
           el.style.opacity = opacity;
           el.style.transform = `translateY(${translateY}px)`;
         },
-        delay: i * 250,
+        delay: i * 200,
         onComplete: () => {
           // add callback logic here if necessary
         }
@@ -52,11 +52,11 @@ export default function GameBoard() {
     });
   }, [gameStarted]);
 
-  function flipCards() {
-    setTimeout(() => {
-      setAllCardsFlipped(false);
-    }, 9000);
-  }
+  // function flipCards() {
+  //   // setTimeout(() => {
+  //   //   setAllCardsFlipped(false);
+  //   // }, 9000);
+  // }
 
   function shuffleCards() {
     setCardData(shuffle(cardData));
@@ -74,7 +74,7 @@ export default function GameBoard() {
           : ''}
       </Flipper>
 
-      {flipCards()}
+      {/* {flipCards()} */}
       <button onClick={shuffleCards}>Shuffle</button>
     </div>
   );
