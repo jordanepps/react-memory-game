@@ -19,14 +19,14 @@ export default function Card({ icon, allCardsFlipped, flipId }) {
   return (
     <Flipped inverseFlipId={flipId}>
       <div className="card" ref={cardRef}>
-        {/* <Flipped inverseFlipId={flipId}> */}
-        <div className="card-container">
-          <ReactCardFlip isFlipped={allCardsFlipped || cardFlipped}>
-            <CardFront handleFlip={handleFlip} key="front" />
-            <CardBack key="back" icon={icon} />
-          </ReactCardFlip>
-        </div>
-        {/* </Flipped> */}
+        <Flipped inverseFlipId={flipId}>
+          <div className="card-container">
+            <ReactCardFlip isFlipped={allCardsFlipped || cardFlipped}>
+              <CardFront handleFlip={handleFlip} key="front" />
+              <CardBack key="back" icon={icon} />
+            </ReactCardFlip>
+          </div>
+        </Flipped>
       </div>
     </Flipped>
   );
