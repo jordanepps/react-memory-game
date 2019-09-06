@@ -32,6 +32,7 @@ export default function GameBoard() {
   const containerRef = useRef(null);
 
   useEffect(() => {
+    let cardsToRender = cardData.length;
     const cards = [...containerRef.current.querySelectorAll('.card')];
     cards.forEach((el, i) => {
       spring({
@@ -46,35 +47,35 @@ export default function GameBoard() {
         },
         delay: i * 200,
         onComplete: () => {
-          // add callback logic here if necessary
+          cardsToRender--;
+          if (cardsToRender === 0) setAllCardsFlipped(false);
         }
       });
     });
   }, [gameStarted]);
 
-  // function flipCards() {
-  //   // setTimeout(() => {
-  //   //   setAllCardsFlipped(false);
-  //   // }, 9000);
-  // }
-
   function shuffleCards() {
     setCardData(shuffle(cardData));
+  }
+
+  function renderCards() {
+    return cardData.map((card, i) => (
+      <Flipped key={i} flipId={i}>
+        <Card
+          key={i}
+          icon={card}
+          allCardsFlipped={allCardsFlipped}
+          flipId={i}
+        />
+      </Flipped>
+    ));
   }
 
   return (
     <div className="game-board" ref={containerRef}>
       <Flipper flipKey={cardData.join('')}>
-        {gameStarted
-          ? cardData.map((card, i) => (
-              <Flipped key={i} flipId={i}>
-                <Card key={i} icon={card} allCardsFlipped={allCardsFlipped} />
-              </Flipped>
-            ))
-          : ''}
+        {gameStarted ? renderCards() : ''}
       </Flipper>
-
-      {/* {flipCards()} */}
       <button onClick={shuffleCards}>Shuffle</button>
     </div>
   );

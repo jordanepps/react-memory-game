@@ -1,4 +1,5 @@
 import React, { useRef, useState } from 'react';
+import { Flipped } from 'react-flip-toolkit';
 import ReactCardFlip from 'react-card-flip';
 
 import './Card.css';
@@ -6,7 +7,7 @@ import './Card.css';
 import CardFront from '../CardFront/CardFront';
 import CardBack from '../CardBack/CardBack';
 
-export default function Card({ icon, allCardsFlipped }) {
+export default function Card({ icon, allCardsFlipped, flipId }) {
   const [cardFlipped, setCardFlipped] = useState(false);
   const cardRef = useRef(null);
 
@@ -16,13 +17,17 @@ export default function Card({ icon, allCardsFlipped }) {
   }
 
   return (
-    <div className="card" ref={cardRef}>
-      <div className="card-container">
-        <ReactCardFlip isFlipped={allCardsFlipped || cardFlipped}>
-          <CardFront handleFlip={handleFlip} key="front" />
-          <CardBack key="back" icon={icon} />
-        </ReactCardFlip>
+    <Flipped inverseFlipId={flipId}>
+      <div className="card" ref={cardRef}>
+        {/* <Flipped inverseFlipId={flipId}> */}
+        <div className="card-container">
+          <ReactCardFlip isFlipped={allCardsFlipped || cardFlipped}>
+            <CardFront handleFlip={handleFlip} key="front" />
+            <CardBack key="back" icon={icon} />
+          </ReactCardFlip>
+        </div>
+        {/* </Flipped> */}
       </div>
-    </div>
+    </Flipped>
   );
 }
